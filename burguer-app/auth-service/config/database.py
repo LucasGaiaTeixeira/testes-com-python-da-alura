@@ -1,7 +1,7 @@
 # Conecta ao  banco de dados MongoDB utilizando as variáveis de ambiente
 
-from pymongo import MongoClient
 import os
+from pymongo import MongoClient
 from dotenv import load_dotenv
 
 # Carrega as variáveis de ambiente do arquivo .env

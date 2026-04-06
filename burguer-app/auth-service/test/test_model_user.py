@@ -70,7 +70,7 @@ def test_serialize_user_int():#comeco da funcão tem que começar com test
 def test_serialize_user_string():#comeco da funcão tem que começar com test
     with pytest.raises(AttributeError):#with e para executar algo e quando terminar de executar fecha e limpa da memoria, pytest.raises(AttributeError) e ele tambem faz uma outra condição que funciona com um assert o with que faz a verificação como se fosse um assert o assert essta implicito no with, quer dizer que ele vai testar se vai dar o erro AttributeError se der que dizer que ele passo no teste, pois o serilize_user() espera um dicionario, então se passar o teste quer dizer que o codigo não consegue receber um valor string
         serialize_user("testando") 
-
+    #no caso o pytest.raises() e um erro de excessão quer dizer se der erro de excessão ele vai passar o teste porque ele precisa dar erro, foi configurado no teste para dar erro, se nao der erro porque o codigo esta correto, e nao deu erro.
 
 
 def test_serialize_user_Inexperado():#comeco da funcão tem que começar com test
@@ -95,30 +95,25 @@ def test_serialize_user_Inexperado():#comeco da funcão tem que começar com tes
     assert resultado == esperado#o assert serve para testar se a condição do teste para ser validado para saber se o comportamente e o esperado, usamos o assert se não der erro, o teste funcionou e retornou o valor esperado senão deu erro e o valor nao veio como foi esperado
 
 
-def test_serialize_user_Inexperado():#comeco da funcão tem que começar com test
-    user: dict[str] = {
-        "email": None,
-        "name": None,
-        "address": None,
-        "role": None
-    }
+# def test_serialize_user_Inexperado():#comeco da funcão tem que começar com test
+#     user: dict[str] = {
+#         "email": None,
+#         "name": None,
+#         "address": None,
+#         "role": None
+#     }
 
-    resultado = serialize_user(user)
+#     resultado = serialize_user(user)
 
-    esperado: dict[str] = {
-        "email": None,
-        "name": "",
-        "address": "",
-        "role": "cliente"
-    }
-    #obs: aqui no caso não vai pasar o teste porque a funcão originial ele quer receber no dicionario valores realemente
-
-
-    assert resultado == esperado#o assert serve para testar se a condição do teste para ser validado para saber se o comportamente e o esperado, usamos o assert se não der erro, o teste funcionou e retornou o valor esperado senão deu erro e o valor nao veio como foi esperado
+#     esperado: dict[str] = {
+#         "email": None,
+#         "name": "",
+#         "address": "",
+#         "role": "cliente"
+#     }
+#     #obs: aqui no caso não vai pasar o teste porque a funcão originial ele quer receber no dicionario valores realemente
 
 
-""" 
-    obs:
-    1. usando no cmd ou powershell pytest -v vai mostrar melhor oque foi testado e oque passou ou não
-    2. se tiver mais de um arquivo de teste pode especificar qual arquivo e para usar: pytest ./test/test_model_user.py, que ira rodar o arquivo
-"""
+#     assert resultado == esperado#o assert serve para testar se a condição do teste para ser validado para saber se o comportamente e o esperado, usamos o assert se não der erro, o teste funcionou e retornou o valor esperado senão deu erro e o valor nao veio como foi esperado
+
+

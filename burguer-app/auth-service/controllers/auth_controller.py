@@ -15,7 +15,6 @@ def login():
     if not user:
         flash("Credenciais inválidas")
         return redirect(url_for("auth.login_page"))
-    
     session["user"] = serialize_user(user)
     return redirect(url_for("auth.dashboard"))
 

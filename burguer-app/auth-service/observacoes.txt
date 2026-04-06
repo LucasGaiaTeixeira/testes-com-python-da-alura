@@ -1,0 +1,135 @@
+obs:
+1. usando no cmd ou powershell pytest -v vai mostrar melhor oque foi testado e oque passou ou não
+2. se tiver mais de um arquivo de teste pode especificar qual arquivo e para usar: pytest ./test/test_model_user.py, que ira rodar o arquivo
+
+3. existe um plugin chamado pytest-cov que ele calcula quando fazemos teste em alguma função, branches, linhas de codigo ou arquivos, o quanto do nosso codigo total foi testado, se foi so uma pequena parte, grande parte ou nada, o quao foi executado pelos testes
+    quando usar:        
+        Durante o desenvolvimento.
+
+        Em revisão de código.
+
+        Em CI/CD, integração continua e entrega continua
+
+
+
+4. utilizando o cov de cobertura para os testes utilizando o pytest --cov para mecher com os comandos da extensao do framework pytest
+    --cov arquivo de onde vai ser testado o codigo, por exemplo o models/user_model.py ele esta vendo se a corbertura dos testes esta funcionando em todos os blocos executaveis do arquivo
+
+    --cov=caminho_arquivo: para estar a cobertudo do arquivo do codigo, mas não do test mas do programa funcionando
+
+    --cov-report=term-missing: para mostrar os blocos que não foram executados
+
+    --cov-report=html: ele vai transformar  o relatorio em um html e salvar na pasta raiz criando uma outra pasta colocando o html la dentro chamado htmlcov e pode abri no index.html no navegador
+
+    --cov-fail-under=80: quer dizer que quando o teste de cobertura for menor que 80% do teste o teste ira falhar
+
+(
+    pytest --cov ./test/ --cov-report=term-missing: vai buscar na pasta test os codigos que não foram executados
+)
+
+
+
+
+
+5. pylint (
+    pylint app.py Ver nota e erros de um módulo específico
+
+    pylint app.py --disable=C0114,C0115 Ignorar mensagens específicas
+
+    pylint app.py --disable=missing-module-docstring,missing-class-docstring Ignorar mensagens específicas, pode combinar vários com vírgula.
+
+    pylint app.py --enable=W0611 ***Habilitar mensagens específicas
+
+    pylint app.py --output-format=json Formato de saída JSON
+
+    pylint app.py --output-format=parseable Formato de saída legível por ferramentas externas
+
+    pylint **/*.py Análise recursiva
+
+    pylint app.py ; pytest Combinar com testes
+
+    pylint app.py --fail-under=8.5 limite de erros
+)
+
+
+Radon(
+
+    Radon – Complexidade Ciclomática e Métricas de Manutenção
+    O que é complexidade ciclomática
+    A complexidade ciclomática é uma métrica usada em engenharia de software para medir a complexidade lógica de um programa. Ela indica quantos caminhos independentes existem através do código-fonte. Foi proposta por Thomas McCabe em 1976.
+
+    Interpretação:
+
+    Mede o número de decisões lógicas em uma função/método.
+
+    Quanto maior a complexidade, mais difícil de entender, manter e testar.
+
+    Está diretamente ligada à quantidade mínima de testes necessários para cobrir todos os caminhos.
+
+    O que é radon?
+    Radon é uma ferramenta Python de análise estática de código que mede:
+
+    CC (Complexidade Ciclomática)
+
+    MI (Índice de Manutenibilidade)
+
+    Halstead (medidas de esforço cognitivo)
+
+    Raw Metrics (linhas, comentários etc.)
+
+    Como utilizar o radon?
+    Instalar
+    pip install radon
+
+    executar
+    radon cc nome_do_arquivo.py Analisar um arquivo
+
+    radon cc caminho/do/projeto -s -a
+
+    -s: mostra cada função individualmente (sem omitir)
+
+    -a: mostra média da complexidade no final
+
+    radon cc caminho/ -s -n C Exibir apenas elementos acima de um limite
+
+    radon mi caminho/ Mede o quanto um código é fácil de manter, baseado na complexidade, linhas, comentários etc. Nota de A (ótimo) a F (péssimo).
+
+    radon hal caminho/ Volume, Dificuldade, Esforço Tempo estimado de implementação e Bugs estimados
+
+    radon raw caminho/ Total de linhas,Linhas de código, (LOC)Comentários, Classes e Funções
+)
+
+
+Fixture(
+    São funções que preparam um ambiente para testes, fornecendo dados, configurações ou objetos necessários para a execução dos testes.
+
+    Quando usar
+    Conexão isolada para testes
+
+    Criação e limpeza de coleções
+
+    Inserção de dados antes do teste
+
+    Garantir que não usamos dados reais (produção)
+
+    Escopos disponíveis:
+    function" (padrão)
+    A fixture é criada e destruída a cada função de teste.
+
+    Útil para isolamento total dos testes.
+
+    class
+    A fixture é criada uma vez por classe de testes.
+
+    Compartilhada entre todos os métodos da classe.
+
+    module
+    A fixture é criada uma vez por módulo (arquivo de teste).
+
+    Todos os testes do arquivo compartilham a mesma instância.
+
+    session
+    A fixture é criada uma vez por execução do pytest inteiro.
+
+    Compartilhada globalmente entre todos os arquivos de teste.
+)
